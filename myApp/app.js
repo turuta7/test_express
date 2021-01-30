@@ -3,9 +3,7 @@ const startServer = require('./server/bin/www');
 
 require('dotenv').config();
 
-
-// подключение
-mongoose.connect(process.env.URL_DB, {
+mongoose.connect(process.env.URL_DB + process.env.NAME_DB, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
