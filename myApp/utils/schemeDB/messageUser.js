@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const modelMessage= new Schema({
     email: String,
-    massage: String
+    text: String
 },{ timestamps: true });
 
 module.exports = {modelMessage}

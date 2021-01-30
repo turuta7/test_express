@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {validationEmail, validationMessage} = require('../../utils/checkingMailAndMessageLength')
+const {validationEmail, validationText} = require('../../utils/checkingMailAndMessageLength')
 
 const {getFindMessage, createMessageUser} = require('../../utils/workMethodDB')
 
@@ -37,11 +37,11 @@ router.get('/single/:id', async function (req, res, next) {
 
 router.post('/', async (req, res) => {
   const body = req.body;
-  if (body.email && body.message) {
+  if (body.email && body.text) {
     const booleanValidation = validationEmail(body.email);
-    const booleanMessageValidation = validationMessage(body.message)
+    const booleanMessageValidation = validationText(body.text)
     try {
-      const returnCreateMessage = booleanMessageValidation && booleanValidation ? await createMessageUser(body.email, body.message) : {message: 'error'};
+      const returnCreateMessage = booleanMessageValidation && booleanValidation ? await createMessageUser(body.email, body.text) : {message: 'error'};
       const status = returnCreateMessage ? 200 : 403;
       res.status(status).send(returnCreateMessage);
     } catch (e) {

@@ -3,9 +3,9 @@ const validationEmail = (email) => {
     return re.test(email);
 }
 
-const validationMessage = (message) => {
+const validationText = (text) => {
     const re = /^.{1,99}$/;
-    return re.test(message);
+    return re.test(text);
 }
 
-module.exports = {validationEmail, validationMessage}
+module.exports = {validationEmail, validationText}
