@@ -13,9 +13,15 @@ router.get('/list/:num', async function (req, res, next) {
     num = 10
   } else {
     num = Number(Number(num) + 1) * 10;
+  };
+  try {
+    const returnMessage = await getFindMessage(num);
+    const status = returnMessage ? 200 : 403;
+    res.status(status).send({message: returnMessage});
+  } catch (e) {
+    console.error(e);
+    res.status(403).send({message: 'error'});
   }
-  const returnMessage = await getFindMessage(num)
-  res.send({message: returnMessage});
 });
 
 router.get('/single/:id', async function (req, res, next) {

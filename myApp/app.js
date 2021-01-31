@@ -3,6 +3,7 @@ const startServer = require('./server/bin/www');
 
 require('dotenv').config();
 
+// start app Connection DB + Server
 mongoose.connect(process.env.URL_DB + process.env.NAME_DB, {
     useUnifiedTopology: true,
     useNewUrlParser: true
